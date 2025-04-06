@@ -11,8 +11,7 @@ import {
   FaDatabase, 
   FaPython,
   FaJava, 
-  FaGitAlt, 
-  FaBootstrap, 
+  FaGitAlt,
   FaServer 
 } from 'react-icons/fa';
 import { DiMongodb } from 'react-icons/di';
@@ -222,19 +221,17 @@ const Skills = () => {
   };
 
   const frontendSkills = [
-    { name: 'HTML', icon: <FaHtml5 />, level: 90 },
-    { name: 'CSS', icon: <FaCss3Alt />, level: 85 },
-    { name: 'JavaScript', icon: <FaJs />, level: 80 },
-    { name: 'React', icon: <FaReact />, level: 75 },
-    { name: 'Bootstrap', icon: <FaBootstrap />, level: 85 },
+    { name: 'HTML', icon: <FaHtml5 />, level: 70 },
+    { name: 'CSS', icon: <FaCss3Alt />, level: 65 },
+    { name: 'JavaScript', icon: <FaJs />, level: 60 },
+    { name: 'React', icon: <FaReact />, level: 55 },
   ];
 
   const backendSkills = [
-    { name: 'PHP', icon: <FaPhp />, level: 85 },
-    { name: 'Node.js', icon: <FaNode />, level: 70 },
-    { name: 'Express', icon: <SiExpress />, level: 70 },
-    { name: 'Django', icon: <SiDjango />, level: 75 },
-    { name: 'REST API', icon: <FaServer />, level: 80 },
+    { name: 'PHP', icon: <FaPhp />, level: 65 },
+    { name: 'Node.js', icon: <FaNode />, level: 50 },
+    { name: 'Express', icon: <SiExpress />, level: 50 },
+    { name: 'Django', icon: <SiDjango />, level: 55 },
   ];
 
   const languages = [

@@ -1,18 +1,20 @@
 [
   {
+    "_id": "1",
     "title": "InfiniteAI Website",
     "description": "Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.",
-    "technologies": ["HTML", "CSS", "Bootstrap", "JavaScript", "PHP", "MySQL"],
-    "image": "/images/projects/infiniteai.jpg",
+    "technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    "image": "https://placehold.co/600x400/007bff/ffffff?text=InfiniteAI+Website",
     "github": "https://github.com/HitarthVaghela/InfiniteIO",
     "demo": "#",
     "featured": true
   },
   {
-    "title": "Serene Space Web Portal",
-    "description": "Built an appointment booking feature for healthcare, allowing patients to select available time slots, streamlining the scheduling process by 60%. Integrated automated email confirmations and enhanced user interface.",
-    "technologies": ["HTML", "CSS", "Bootstrap", "JavaScript", "MySQL", "PHP"],
-    "image": "/images/projects/serene-space.jpg",
+    "_id": "2",
+    "title": "Serene Space",
+    "description": "Created a mental health app with personalized recommendations, meditation guides, mood tracking, and daily affirmations.",
+    "technologies": ["HTML", "CSS", "JavaScript", "MySQL", "PHP"],
+    "image": "https://placehold.co/600x400/007bff/ffffff?text=Serene+Space",
     "github": "https://github.com/HitarthVaghela/Serene_Space",
     "demo": "#",
     "featured": true

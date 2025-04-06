@@ -244,7 +244,7 @@ const mockProjects = [
     title: 'InfiniteAI Website',
     description:
       'Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.',
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'PHP', 'MySQL'],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     image: 'https://placehold.co/600x400/007bff/ffffff?text=InfiniteAI+Website',
     github: 'https://github.com/HitarthVaghela/InfiniteIO',
     demo: '#',
@@ -252,10 +252,10 @@ const mockProjects = [
   },
   {
     _id: '2',
-    title: 'Serene Space Web Portal',
+    title: 'Serene Space',
     description:
-      'Built an appointment booking feature for healthcare, allowing patients to select available time slots, streamlining the scheduling process by 60%. Integrated automated email confirmations.',
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'MySQL', 'PHP'],
+      'Created a mental health app with personalized recommendations, meditation guides, mood tracking, and daily affirmations.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'PHP'],
     image: 'https://placehold.co/600x400/007bff/ffffff?text=Serene+Space',
     github: 'https://github.com/HitarthVaghela/Serene_Space',
     demo: '#',
