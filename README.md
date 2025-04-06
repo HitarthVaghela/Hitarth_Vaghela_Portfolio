@@ -1,4 +1,4 @@
-# 💼 Hitarth Vaghela - Portfolio Website
+# Hitarth Vaghela - Portfolio Website
 
 Welcome to my personal portfolio website!  
 You can visit it live here: [Hitarth Vaghela Portfolio](https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio/)
