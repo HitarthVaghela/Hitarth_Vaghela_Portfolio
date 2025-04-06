@@ -1,0 +1,47 @@
+[
+  {
+    "title": "InfiniteAI Website",
+    "description": "Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.",
+    "technologies": ["HTML", "CSS", "Bootstrap", "JavaScript", "PHP", "MySQL"],
+    "image": "/images/projects/infiniteai.jpg",
+    "github": "https://github.com/HitarthVaghela/InfiniteIO",
+    "demo": "#",
+    "featured": true
+  },
+  {
+    "title": "Serene Space Web Portal",
+    "description": "Built an appointment booking feature for healthcare, allowing patients to select available time slots, streamlining the scheduling process by 60%. Integrated automated email confirmations and enhanced user interface.",
+    "technologies": ["HTML", "CSS", "Bootstrap", "JavaScript", "MySQL", "PHP"],
+    "image": "/images/projects/serene-space.jpg",
+    "github": "https://github.com/HitarthVaghela/Serene_Space",
+    "demo": "#",
+    "featured": true
+  },
+  {
+    "title": "Chess Using JavaScript",
+    "description": "A functional chess game built entirely using JavaScript, HTML, and CSS. The project was created as an experiment to try new ideas and enhance skills in web-based game development.",
+    "technologies": ["JavaScript", "HTML", "CSS"],
+    "image": "/images/projects/chess.jpg",
+    "github": "https://github.com/HitarthVaghela/Chess-Using-JavaScript",
+    "demo": "#",
+    "featured": true
+  },
+  {
+    "title": "E-Commerce Website Using Django",
+    "description": "An e-commerce platform built with Django framework, featuring product listings, user authentication, shopping cart functionality, and payment integration.",
+    "technologies": ["Python", "Django", "HTML", "CSS", "JavaScript", "SQLite"],
+    "image": "/images/projects/ecommerce.jpg",
+    "github": "https://github.com/HitarthVaghela/E-Commerce-website-using-Django",
+    "demo": "#",
+    "featured": false
+  },
+  {
+    "title": "Login with Mail Confirmation",
+    "description": "A secure login system with email verification functionality, ensuring user authentication security through email confirmation.",
+    "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    "image": "/images/projects/login.jpg",
+    "github": "https://github.com/HitarthVaghela/Login-with-Mail-Confirmation",
+    "demo": "#",
+    "featured": false
+  }
+] 
