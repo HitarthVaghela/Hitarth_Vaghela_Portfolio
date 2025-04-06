@@ -268,33 +268,52 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulating form submission with timeout
-    setTimeout(() => {
-      setFormStatus({
-        submitted: true,
-        success: true,
-        message: 'Your message has been sent successfully!',
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setLoading(false);
-    }, 1500);
+    // For GitHub Pages deployment without a backend server
+    // Just simulate a successful submission and prompt the user to email directly
+    setFormStatus({
+      submitted: true,
+      success: true,
+      message: 'Thanks for your message! Since this is a static site, please email me directly at hdvaghela27@gmail.com',
+    });
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(false);
+
+    /* Backend integration code - uncomment when backend is available
+    // API URL - use environment variable in development or the deployed URL in production
+    const API_URL = process.env.NODE_ENV === 'production' 
+      ? 'https://hitarth-portfolio-api.onrender.com/api/contact' 
+      : 'http://localhost:5000/api/contact';
     
-    // In a real application, you would send data to your backend:
-    /*
     try {
-      const response = await axios.post('/api/contact', formData);
-      setFormStatus({
-        submitted: true,
-        success: true,
-        message: 'Your message has been sent successfully!',
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      if (response.ok) {
+        setFormStatus({
+          submitted: true,
+          success: true,
+          message: 'Your message has been sent successfully!',
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setFormStatus({
+          submitted: true,
+          success: false,
+          message: 'Failed to send message. Please try again later.',
+        });
+      }
     } catch (error) {
       setFormStatus({
         submitted: true,
         success: false,
         message: 'Failed to send message. Please try again later.',
       });
+      console.error('Error sending message:', error);
     } finally {
       setLoading(false);
     }

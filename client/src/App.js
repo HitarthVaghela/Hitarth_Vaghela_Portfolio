@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -9,6 +10,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Admin from './components/Admin';
 import { Helmet } from 'react-helmet';
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
       <Helmet>
         <title>Hitarth Vaghela | Software Engineer</title>
         <meta name="description" content="Portfolio of Hitarth Vaghela, a Software Engineer with expertise in full-stack development, PHP, and MySQL." />
@@ -44,15 +46,24 @@ function App() {
       
       <GlobalStyles />
       <CustomCursor />
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
-    </>
+      
+      <Routes>
+        {/* Admin route disabled for static GitHub Pages deployment */}
+        {/* <Route path="/admin" element={<Admin />} /> */}
+        <Route path="/" element={
+          <>
+            <Navbar />
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Contact />
+            <Footer />
+          </>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
