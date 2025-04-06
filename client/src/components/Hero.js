@@ -337,13 +337,13 @@ const Hero = () => {
           </SocialLinks>
         </HeroContent>
         
-        <HeroImage
-          initial={{ opacity: 0, scale: 0.8 }}
+        <HeroImage 
+          initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: 'spring', stiffness: 50, delay: 0.5 }}
+          transition={{ duration: 0.5 }}
         >
           <img 
-            src="/profile.jpg" 
+            src={process.env.PUBLIC_URL + "/profile.jpg"} 
             alt="Hitarth Vaghela" 
           />
         </HeroImage>
