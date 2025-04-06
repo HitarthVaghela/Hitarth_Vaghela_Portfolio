@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Hitarth_Vaghela_Portfolio/static/css/main.e6c13ad2.css",
-    "main.js": "/Hitarth_Vaghela_Portfolio/static/js/main.f0d0f878.js",
+    "main.js": "/Hitarth_Vaghela_Portfolio/static/js/main.bfaf6c8b.js",
     "static/js/453.419a5d54.chunk.js": "/Hitarth_Vaghela_Portfolio/static/js/453.419a5d54.chunk.js",
     "index.html": "/Hitarth_Vaghela_Portfolio/index.html",
     "main.e6c13ad2.css.map": "/Hitarth_Vaghela_Portfolio/static/css/main.e6c13ad2.css.map",
-    "main.f0d0f878.js.map": "/Hitarth_Vaghela_Portfolio/static/js/main.f0d0f878.js.map",
+    "main.bfaf6c8b.js.map": "/Hitarth_Vaghela_Portfolio/static/js/main.bfaf6c8b.js.map",
     "453.419a5d54.chunk.js.map": "/Hitarth_Vaghela_Portfolio/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.f0d0f878.js"
+    "static/js/main.bfaf6c8b.js"
   ]
 }

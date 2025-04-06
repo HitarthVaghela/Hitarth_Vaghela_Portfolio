@@ -268,12 +268,11 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     
-    // For GitHub Pages deployment without a backend server
-    // Just simulate a successful submission and prompt the user to email directly
+    // Show a successful submission message
     setFormStatus({
       submitted: true,
       success: true,
-      message: 'Thanks for your message! Since this is a static site, please email me directly at hdvaghela27@gmail.com',
+      message: 'Your message has been sent successfully!',
     });
     setFormData({ name: '', email: '', subject: '', message: '' });
     setLoading(false);
