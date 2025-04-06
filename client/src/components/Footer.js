@@ -146,7 +146,7 @@ const Footer = () => {
             </SocialLink>
             
             <SocialLink 
-              href="mailto:hdvaghela27@gmail.com"
+              href="mailto:hitarthvaghela.work@gmail.com"
               aria-label="Email"
             >
               <FaEnvelope />

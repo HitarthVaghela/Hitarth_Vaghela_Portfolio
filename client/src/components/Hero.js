@@ -318,7 +318,7 @@ const Hero = () => {
             </SocialIcon>
             
             <SocialIcon 
-              href="mailto:hdvaghela27@gmail.com"
+              href="mailto:hitarthvaghela.work@gmail.com"
               whileHover={{ scale: 1.2, rotate: 10 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Email"

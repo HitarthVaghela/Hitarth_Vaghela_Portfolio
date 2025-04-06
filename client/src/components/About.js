@@ -260,7 +260,7 @@ const About = () => {
                 <span>Name:</span> Hitarth Vaghela
               </InfoItem>
               <InfoItem>
-                <span>Email:</span> hdvaghela27@gmail.com
+                <span>Email:</span> hitarthvaghela.work@gmail.com
               </InfoItem>
               <InfoItem>
                 <span>Phone:</span> +91 9033689105

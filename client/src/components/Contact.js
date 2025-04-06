@@ -376,8 +376,8 @@ const Contact = () => {
               </IconWrapper>
               <CardContent>
                 <CardTitle>Email</CardTitle>
-                <CardLink href="mailto:hdvaghela27@gmail.com">
-                  hdvaghela27@gmail.com
+                <CardLink href="mailto:hitarthvaghela.work@gmail.com">
+                  hitarthvaghela.work@gmail.com
                 </CardLink>
               </CardContent>
             </ContactCard>
