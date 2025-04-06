@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Hitarth_Vaghela_Portfolio/static/css/main.e6c13ad2.css",
+    "main.js": "/Hitarth_Vaghela_Portfolio/static/js/main.c1ee21da.js",
+    "static/js/453.419a5d54.chunk.js": "/Hitarth_Vaghela_Portfolio/static/js/453.419a5d54.chunk.js",
+    "index.html": "/Hitarth_Vaghela_Portfolio/index.html",
+    "main.e6c13ad2.css.map": "/Hitarth_Vaghela_Portfolio/static/css/main.e6c13ad2.css.map",
+    "main.c1ee21da.js.map": "/Hitarth_Vaghela_Portfolio/static/js/main.c1ee21da.js.map",
+    "453.419a5d54.chunk.js.map": "/Hitarth_Vaghela_Portfolio/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c1ee21da.js"
+  ]
+}
