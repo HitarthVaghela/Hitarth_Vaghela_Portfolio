@@ -278,7 +278,7 @@ const About = () => {
             
             <ButtonWrapper>
               <Button 
-                href="/HITARTH_VAGHELA_RESUME.pdf" 
+                href={process.env.PUBLIC_URL + "/HITARTH_VAGHELA_RESUME.pdf"} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{ 
