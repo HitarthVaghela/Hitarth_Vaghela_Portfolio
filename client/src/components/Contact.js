@@ -256,7 +256,7 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
 
   const API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://your-backend-url.com/api/contact'  // We'll update this with actual URL after deployment
+    ? 'https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio/api/contact'
     : 'http://localhost:5000/api/contact';
 
   const validateForm = () => {

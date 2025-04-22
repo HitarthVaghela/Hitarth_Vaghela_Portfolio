@@ -1,77 +1,61 @@
 # Portfolio Website
 
-A modern portfolio website built with React.js and Node.js, featuring a contact form with MongoDB integration.
+A modern portfolio website built with React.js, featuring a responsive design and interactive components.
 
 ## Features
 
 - Responsive design
 - Smooth scrolling navigation
 - Project showcase
-- Contact form with MongoDB backend
+- Contact form
 - Skills and experience sections
 - Social media integration
 
 ## Tech Stack
 
 - Frontend: React.js, Styled Components, Framer Motion
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Deployment: Render/Heroku (backend), Netlify/Vercel (frontend)
+- Deployment: GitHub Pages
 
 ## Local Development
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/HitarthVaghela/portfolio.git
-cd portfolio
+git clone https://github.com/HitarthVaghela/Hitarth_Vaghela_Portfolio.git
+cd Hitarth_Vaghela_Portfolio
 ```
 
 2. Install dependencies:
 ```bash
-# Install server dependencies
-cd server
-npm install
-
-# Install client dependencies
-cd ../client
+# Install dependencies
+cd client
 npm install
 ```
 
-3. Set up environment variables:
-- Create a `.env` file in the server directory
-- Add your MongoDB connection string:
-```
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-```
-
-4. Run the development servers:
+3. Run the development server:
 ```bash
-# Run backend server (from server directory)
-npm start
-
 # Run frontend development server (from client directory)
 npm start
 ```
 
 ## Deployment
 
-### Backend Deployment (Render)
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Set environment variables:
-   - MONGO_URI
-   - NODE_ENV=production
-4. Deploy
+The portfolio is deployed using GitHub Pages. To deploy updates:
 
-### Frontend Deployment (Netlify)
-1. Create a new site on Netlify
-2. Connect your GitHub repository
-3. Set build settings:
-   - Build command: `cd client && npm install && npm run build`
-   - Publish directory: `client/build`
-4. Set environment variables if needed
-5. Deploy
+1. Make your changes
+2. Commit the changes:
+```bash
+git add .
+git commit -m "Your commit message"
+```
+3. Push to GitHub:
+```bash
+git push
+```
+4. GitHub Actions will automatically build and deploy your changes
+
+## Live Website
+
+Visit the portfolio at: [https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio](https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio)
 
 ## Contributing
 
