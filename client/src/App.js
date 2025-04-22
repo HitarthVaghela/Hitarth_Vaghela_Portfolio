@@ -10,7 +10,6 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Admin from './components/Admin';
 import { Helmet } from 'react-helmet';
 
 function App() {
