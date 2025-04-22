@@ -314,10 +314,7 @@ const Projects = () => {
 
   const filteredProjects = projects.filter((project) => {
     if (activeTab === 'all') return true;
-    if (activeTab === 'featured') {
-      return project.featured && ['Spoural Management System', 'Serene Space', 'InfiniteAI Website'].includes(project.title);
-    }
-    return false;
+    return project.technologies.includes(activeTab);
   });
 
   const handleTabChange = (tab) => {
@@ -340,10 +337,22 @@ const Projects = () => {
             All
           </TabButton>
           <TabButton
-            active={activeTab === 'featured'}
-            onClick={() => handleTabChange('featured')}
+            active={activeTab === 'PHP'}
+            onClick={() => handleTabChange('PHP')}
           >
-            Featured
+            PHP
+          </TabButton>
+          <TabButton
+            active={activeTab === 'React'}
+            onClick={() => handleTabChange('React')}
+          >
+            React
+          </TabButton>
+          <TabButton
+            active={activeTab === 'Node.js'}
+            onClick={() => handleTabChange('Node.js')}
+          >
+            Node.js
           </TabButton>
         </ProjectTabs>
 
