@@ -241,12 +241,12 @@ const ErrorMessage = styled.div`
 const mockProjects = [
   {
     _id: '1',
-    title: 'InfiniteAI Website',
+    title: 'Spoural Management System',
     description:
-      'Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=InfiniteAI+Website',
-    github: 'https://github.com/HitarthVaghela/InfiniteIO',
+      'A comprehensive software solution designed to streamline the planning, execution, and management of events. Provides tools to handle various aspects of event organization, from initial planning to post-event analysis.',
+    technologies: ['PHP', 'HTML', 'CSS', 'MySQL', 'JavaScript'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=Spoural+Management',
+    github: 'https://github.com/harsh1036/Spoural_Managment_System',
     demo: '#',
     featured: true,
   },
@@ -263,6 +263,17 @@ const mockProjects = [
   },
   {
     _id: '3',
+    title: 'InfiniteAI Website',
+    description:
+      'Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=InfiniteAI+Website',
+    github: 'https://github.com/HitarthVaghela/InfiniteIO',
+    demo: '#',
+    featured: true,
+  },
+  {
+    _id: '4',
     title: 'Chess Using JavaScript',
     description:
       'A functional chess game built entirely using JavaScript, HTML, and CSS. The project was created as an experiment to try new ideas and enhance skills in web-based game development.',
@@ -270,10 +281,10 @@ const mockProjects = [
     image: 'https://placehold.co/600x400/007bff/ffffff?text=Chess+Game',
     github: 'https://github.com/HitarthVaghela/Chess-Using-JavaScript',
     demo: '#',
-    featured: true,
+    featured: false,
   },
   {
-    _id: '4',
+    _id: '5',
     title: 'E-Commerce Website Using Django',
     description:
       'An e-commerce platform built with Django framework, featuring product listings, user authentication, shopping cart functionality, and payment integration.',
@@ -281,17 +292,6 @@ const mockProjects = [
     image: 'https://placehold.co/600x400/007bff/ffffff?text=E-Commerce+Website',
     github:
       'https://github.com/HitarthVaghela/E-Commerce-website-using-Django',
-    demo: '#',
-    featured: false,
-  },
-  {
-    _id: '5',
-    title: 'Spoural Management System',
-    description:
-      'A comprehensive software solution designed to streamline the planning, execution, and management of events. Provides tools to handle various aspects of event organization, from initial planning to post-event analysis.',
-    technologies: ['PHP', 'HTML', 'CSS', 'MySQL', 'JavaScript'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=Spoural+Management',
-    github: 'https://github.com/harsh1036/Spoural_Managment_System',
     demo: '#',
     featured: false,
   },
