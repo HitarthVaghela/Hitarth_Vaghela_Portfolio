@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProjectsSection = styled.section`
@@ -204,37 +203,6 @@ const TechTag = styled.span`
     background-color: var(--accent-color);
     color: #fff;
   }
-`;
-
-const LoadingSpinner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-  
-  .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 123, 255, 0.2);
-    border-top: 5px solid var(--accent-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-`;
-
-const ErrorMessage = styled.div`
-  text-align: center;
-  color: var(--danger-color);
-  padding: 2rem;
 `;
 
 // Mock data in case API is not available
