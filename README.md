@@ -1,9 +1,85 @@
-# Hitarth Vaghela - Portfolio Website
+# Portfolio Website
 
-Welcome to my personal portfolio website!  
-You can visit it live here: [Hitarth Vaghela Portfolio](https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio/)
+A modern portfolio website built with React.js and Node.js, featuring a contact form with MongoDB integration.
 
-This website showcases my skills, projects, experience, and contact information. It serves as a central place for anyone looking to learn more about me professionally.
+## Features
+
+- Responsive design
+- Smooth scrolling navigation
+- Project showcase
+- Contact form with MongoDB backend
+- Skills and experience sections
+- Social media integration
+
+## Tech Stack
+
+- Frontend: React.js, Styled Components, Framer Motion
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Deployment: Render/Heroku (backend), Netlify/Vercel (frontend)
+
+## Local Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/HitarthVaghela/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+```bash
+# Install server dependencies
+cd server
+npm install
+
+# Install client dependencies
+cd ../client
+npm install
+```
+
+3. Set up environment variables:
+- Create a `.env` file in the server directory
+- Add your MongoDB connection string:
+```
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+```
+
+4. Run the development servers:
+```bash
+# Run backend server (from server directory)
+npm start
+
+# Run frontend development server (from client directory)
+npm start
+```
+
+## Deployment
+
+### Backend Deployment (Render)
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set environment variables:
+   - MONGO_URI
+   - NODE_ENV=production
+4. Deploy
+
+### Frontend Deployment (Netlify)
+1. Create a new site on Netlify
+2. Connect your GitHub repository
+3. Set build settings:
+   - Build command: `cd client && npm install && npm run build`
+   - Publish directory: `client/build`
+4. Set environment variables if needed
+5. Deploy
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ---
 

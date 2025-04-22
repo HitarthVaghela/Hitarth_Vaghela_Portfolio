@@ -84,7 +84,7 @@ const ButtonGroup = styled(motion.div)`
   }
 `;
 
-const Button = styled(motion.a)`
+const Button = styled(motion.button)`
   display: inline-block;
   padding: 0.8rem 1.8rem;
   border-radius: 5px;
@@ -92,6 +92,7 @@ const Button = styled(motion.a)`
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
+  border: none;
   
   &.primary {
     background-color: var(--accent-color);
@@ -250,6 +251,13 @@ const Hero = () => {
     },
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <HeroSection id="home">
       <Shapes>
@@ -276,7 +284,10 @@ const Hero = () => {
           
           <ButtonGroup variants={itemVariants}>
             <Button 
-              href="#projects" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('projects');
+              }}
               className="primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -285,7 +296,10 @@ const Hero = () => {
             </Button>
             
             <Button 
-              href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('contact');
+              }}
               className="secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

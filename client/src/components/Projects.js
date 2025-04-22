@@ -309,112 +309,24 @@ const mockProjects = [
 ];
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [projects] = useState(mockProjects);
 
-  // Fetch projects only once when component mounts
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        // Try to fetch from API
-        const response = await axios.get('http://localhost:5000/api/projects');
-        const data = response.data;
-        setProjects(data);
-        setFilteredProjects(data);
-      } catch (error) {
-        console.log('Using mock data due to API error:', error);
-        // Use mock data if API is not available
-        setProjects(mockProjects);
-        setFilteredProjects(mockProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const filteredProjects = projects.filter((project) => {
+    if (activeTab === 'all') return true;
+    return project.technologies.includes(activeTab);
+  });
 
-    fetchProjects();
-  }, []);
-
-  // Filter projects whenever activeTab changes or projects are updated
-  useEffect(() => {
-    if (activeTab === 'all') {
-      setFilteredProjects([...projects]);
-    } else if (activeTab === 'featured') {
-      setFilteredProjects(projects.filter((project) => project.featured));
-    }
-  }, [activeTab, projects]);
-
-  // Handle tab change
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { 
-        type: 'spring', 
-        stiffness: 50
-      },
-    },
-  };
-
-  if (loading) {
-    return (
-      <ProjectsSection id="projects">
-        <ProjectsContainer>
-          <SectionTitle>
-            <h2>My Projects</h2>
-            <p>Check out some of my recent work</p>
-          </SectionTitle>
-          <LoadingSpinner>
-            <div className="spinner"></div>
-          </LoadingSpinner>
-        </ProjectsContainer>
-      </ProjectsSection>
-    );
-  }
-
-  if (error) {
-    return (
-      <ProjectsSection id="projects">
-        <ProjectsContainer>
-          <SectionTitle>
-            <h2>My Projects</h2>
-            <p>Check out some of my recent work</p>
-          </SectionTitle>
-          <ErrorMessage>{error}</ErrorMessage>
-        </ProjectsContainer>
-      </ProjectsSection>
-    );
-  }
-
   return (
     <ProjectsSection id="projects">
       <ProjectsContainer>
-        <SectionTitle
-          as={motion.div}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <SectionTitle>
           <h2>My Projects</h2>
-          <p>Check out some of my recent work</p>
+          <p>Here are some of my recent projects</p>
         </SectionTitle>
 
         <ProjectTabs>
@@ -422,44 +334,56 @@ const Projects = () => {
             active={activeTab === 'all'}
             onClick={() => handleTabChange('all')}
           >
-            All Projects
+            All
           </TabButton>
           <TabButton
-            active={activeTab === 'featured'}
-            onClick={() => handleTabChange('featured')}
+            active={activeTab === 'PHP'}
+            onClick={() => handleTabChange('PHP')}
           >
-            Featured
+            PHP
+          </TabButton>
+          <TabButton
+            active={activeTab === 'React'}
+            onClick={() => handleTabChange('React')}
+          >
+            React
+          </TabButton>
+          <TabButton
+            active={activeTab === 'Node.js'}
+            onClick={() => handleTabChange('Node.js')}
+          >
+            Node.js
           </TabButton>
         </ProjectTabs>
 
         <ProjectsGrid
-          key={activeTab} // Force re-render of grid when tab changes
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
           <AnimatePresence>
             {filteredProjects.map((project) => (
-              <ProjectCard key={project._id} variants={itemVariants}>
+              <ProjectCard
+                key={project._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
                 <ProjectImage className="project-image">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    onError={(e) => {
-                      e.target.src = 'https://placehold.co/600x400/007bff/ffffff?text=Project+Image';
-                    }}
-                  />
+                  <img src={project.image} alt={project.title} />
                   <ProjectLinks className="project-links">
-                    <ProjectLink
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub Repository"
-                    >
-                      <FaGithub />
-                    </ProjectLink>
-                    {project.demo && project.demo !== '#' && (
+                    {project.github && (
+                      <ProjectLink
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                      >
+                        <FaGithub />
+                      </ProjectLink>
+                    )}
+                    {project.demo && (
                       <ProjectLink
                         href={project.demo}
                         target="_blank"
@@ -473,12 +397,10 @@ const Projects = () => {
                 </ProjectImage>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
-                  <ProjectDescription>
-                    {project.description}
-                  </ProjectDescription>
+                  <ProjectDescription>{project.description}</ProjectDescription>
                   <TechStack>
-                    {project.technologies.map((tech, index) => (
-                      <TechTag key={index}>{tech}</TechTag>
+                    {project.technologies.map((tech) => (
+                      <TechTag key={tech}>{tech}</TechTag>
                     ))}
                   </TechStack>
                 </ProjectContent>

@@ -7,33 +7,33 @@ const Contact = require('../models/Contact');
 // @access  Public
 router.post('/', async (req, res) => {
   try {
-    const { name, email, subject, message } = req.body;
+    console.log('Received request:', req.body);
     
-    const newContact = new Contact({
-      name,
-      email,
-      subject,
-      message
+    const newContact = new Contact(req.body);
+    const savedContact = await newContact.save();
+    
+    console.log('Saved contact:', savedContact);
+    res.json({ success: true, message: 'Message sent successfully' });
+    
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error sending message',
+      error: error.message 
     });
-    
-    const contact = await newContact.save();
-    res.json(contact);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
   }
 });
 
 // @route   GET /api/contact
-// @desc    Get all contact messages (admin only)
-// @access  Should be Private (but public for now for testing)
+// @desc    Get all contact messages
+// @access  Public
 router.get('/', async (req, res) => {
   try {
     const messages = await Contact.find().sort({ date: -1 });
     res.json(messages);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching messages' });
   }
 });
 

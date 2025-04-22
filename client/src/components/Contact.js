@@ -248,40 +248,66 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    message: '',
-  });
-  
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    success: false,
-    message: '',
+    message: ''
   });
   
   const [loading, setLoading] = useState(false);
-  
+  const [message, setMessage] = useState({ type: '', text: '' });
+  const [errors, setErrors] = useState({});
+
+  const API_URL = process.env.NODE_ENV === 'production'
+    ? 'https://your-backend-url.com/api/contact'  // We'll update this with actual URL after deployment
+    : 'http://localhost:5000/api/contact';
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     
-    // Show a successful submission message
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: 'Your message has been sent successfully!',
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setLoading(false);
-
-    /* Backend integration code - uncomment when backend is available
-    // API URL - use environment variable in development or the deployed URL in production
-    const API_URL = process.env.NODE_ENV === 'production' 
-      ? 'https://hitarth-portfolio-api.onrender.com/api/contact' 
-      : 'http://localhost:5000/api/contact';
+    if (!validateForm()) {
+      return;
+    }
+    
+    setLoading(true);
+    setMessage({ type: '', text: '' });
     
     try {
       const response = await fetch(API_URL, {
@@ -292,33 +318,35 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
       
-      if (response.ok) {
-        setFormStatus({
-          submitted: true,
-          success: true,
-          message: 'Your message has been sent successfully!',
-        });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setFormStatus({
-          submitted: true,
-          success: false,
-          message: 'Failed to send message. Please try again later.',
-        });
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
       }
-    } catch (error) {
-      setFormStatus({
-        submitted: true,
-        success: false,
-        message: 'Failed to send message. Please try again later.',
+      
+      setMessage({
+        type: 'success',
+        text: 'Message sent successfully! I will get back to you soon.'
       });
-      console.error('Error sending message:', error);
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: error.message || 'Failed to send message. Please try again later.'
+      });
     } finally {
       setLoading(false);
     }
-    */
   };
-  
+
   const formVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: {
@@ -448,29 +476,31 @@ const Contact = () => {
             onSubmit={handleSubmit}
           >
             <FormGroup>
-              <label htmlFor="name">Your Name</label>
+              <label htmlFor="name">Name</label>
               <Input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
-                required
+                placeholder="Your Name"
+                disabled={loading}
               />
+              {errors.name && <FormMessage className="error">{errors.name}</FormMessage>}
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="email">Your Email</label>
+              <label htmlFor="email">Email</label>
               <Input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                required
+                placeholder="Your Email"
+                disabled={loading}
               />
+              {errors.email && <FormMessage className="error">{errors.email}</FormMessage>}
             </FormGroup>
             
             <FormGroup>
@@ -479,11 +509,12 @@ const Contact = () => {
                 type="text"
                 id="subject"
                 name="subject"
-                placeholder="Enter subject"
                 value={formData.subject}
                 onChange={handleChange}
-                required
+                placeholder="Subject"
+                disabled={loading}
               />
+              {errors.subject && <FormMessage className="error">{errors.subject}</FormMessage>}
             </FormGroup>
             
             <FormGroup>
@@ -491,21 +522,26 @@ const Contact = () => {
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Enter your message"
                 value={formData.message}
                 onChange={handleChange}
-                required
+                placeholder="Your Message"
+                disabled={loading}
               />
+              {errors.message && <FormMessage className="error">{errors.message}</FormMessage>}
             </FormGroup>
             
             <SubmitButton type="submit" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message'}
-              <FaPaperPlane />
+              {loading ? 'Sending...' : (
+                <>
+                  <FaPaperPlane />
+                  Send Message
+                </>
+              )}
             </SubmitButton>
             
-            {formStatus.submitted && (
-              <FormMessage className={formStatus.success ? 'success' : 'error'}>
-                {formStatus.message}
+            {message.text && (
+              <FormMessage className={message.type}>
+                {message.text}
               </FormMessage>
             )}
           </ContactForm>
