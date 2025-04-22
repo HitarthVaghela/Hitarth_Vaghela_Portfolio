@@ -30,14 +30,19 @@ jobs:
           npm ci
           npm run build
 
-      - name: Verify build output
-        run: ls -la ./client/build
+      - name: Debug build output
+        run: |
+          echo "Checking build directory contents:"
+          ls -la ./client/build
+          echo "Build directory exists:"
+          [ -d "./client/build" ] && echo "Yes" || echo "No"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: github-pages
-          path: './client/build'
+          path: ./client/build
+          retention-days: 1
 
   deploy:
     environment:
@@ -47,14 +52,19 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: github-pages
           path: ./client/build
 
+      - name: Debug downloaded artifact
+        run: |
+          echo "Checking downloaded artifact contents:"
+          ls -la ./client/build
+
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v2
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2 
+        uses: actions/deploy-pages@v1 
