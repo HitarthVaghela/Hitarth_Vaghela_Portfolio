@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import {
@@ -255,9 +255,35 @@ const Contact = () => {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [errors, setErrors] = useState({});
 
-  const API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://hitarthvaghela.github.io/Hitarth_Vaghela_Portfolio/api/contact'
-    : 'http://localhost:5000/api/contact';
+  const API_URL = 'http://localhost:5000/api/contact';
+  const TEST_API_URL = 'http://localhost:5000/api/test';
+
+  // Test server connection
+  const testConnection = async () => {
+    try {
+      console.log('Testing server connection...');
+      const response = await fetch(TEST_API_URL, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Server test response:', data);
+    } catch (error) {
+      console.error('Server connection test failed:', error);
+    }
+  };
+
+  // Test connection when component mounts
+  useEffect(() => {
+    testConnection();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -310,15 +336,19 @@ const Contact = () => {
     setMessage({ type: '', text: '' });
     
     try {
+      console.log('Submitting form data:', formData);
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(formData),
       });
       
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
       
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
@@ -338,6 +368,7 @@ const Contact = () => {
       });
       
     } catch (error) {
+      console.error('Error submitting form:', error);
       setMessage({
         type: 'error',
         text: error.message || 'Failed to send message. Please try again later.'
