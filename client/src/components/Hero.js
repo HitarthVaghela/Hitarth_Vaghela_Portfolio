@@ -231,6 +231,16 @@ const Shape = styled.div`
 `;
 
 const Hero = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -249,13 +259,6 @@ const Hero = () => {
       opacity: 1,
       transition: { type: 'spring', stiffness: 100, damping: 10 },
     },
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
@@ -283,12 +286,9 @@ const Hero = () => {
           </HeroText>
           
           <ButtonGroup variants={itemVariants}>
-            <Button 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('projects');
-              }}
+            <Button
               className="primary"
+              onClick={() => scrollToSection('projects')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -296,11 +296,8 @@ const Hero = () => {
             </Button>
             
             <Button 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
               className="secondary"
+              onClick={() => scrollToSection('contact')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
