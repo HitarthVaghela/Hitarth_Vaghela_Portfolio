@@ -253,10 +253,15 @@ const Hero = () => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust for header height if needed
+        behavior: 'smooth'
       });
+      // Remove hash from URL
+      if (window.history && window.history.pushState) {
+        window.history.pushState("", document.title, window.location.pathname + window.location.search);
+      }
     }
   };
 
@@ -306,8 +311,7 @@ const Hero = () => {
           
           <ButtonGroup variants={itemVariants}>
             <Button
-              as="a"
-              href="#projects"
+              as="button"
               className="primary"
               onClick={(e) => scrollToSection(e, 'projects')}
               whileHover={{ scale: 1.05 }}
@@ -317,8 +321,7 @@ const Hero = () => {
             </Button>
             
             <Button 
-              as="a"
-              href="#contact"
+              as="button"
               className="secondary"
               onClick={(e) => scrollToSection(e, 'contact')}
               whileHover={{ scale: 1.05 }}

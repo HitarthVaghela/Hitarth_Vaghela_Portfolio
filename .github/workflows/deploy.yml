@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
@@ -30,15 +30,8 @@ jobs:
           npm ci
           npm run build
 
-      - name: Debug build output
-        run: |
-          echo "Checking build directory contents:"
-          ls -la ./client/build
-          echo "Build directory exists:"
-          [ -d "./client/build" ] && echo "Yes" || echo "No"
-
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ./client/build
@@ -52,19 +45,14 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: github-pages
           path: ./client/build
 
-      - name: Debug downloaded artifact
-        run: |
-          echo "Checking downloaded artifact contents:"
-          ls -la ./client/build
-
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1 
+        uses: actions/deploy-pages@v4 

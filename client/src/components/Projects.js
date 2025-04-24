@@ -46,13 +46,13 @@ const SectionTitle = styled.div`
   }
 `;
 
-const ProjectTabs = styled.div`
+const FilterTabs = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 3rem;
 `;
 
-const TabButton = styled.button`
+const FilterButton = styled.button`
   padding: 0.8rem 1.5rem;
   background-color: ${(props) =>
     props.active ? 'var(--accent-color)' : 'var(--card-background)'};
@@ -282,7 +282,8 @@ const Projects = () => {
 
   const filteredProjects = projects.filter((project) => {
     if (activeTab === 'all') return true;
-    return project.technologies.includes(activeTab);
+    if (activeTab === 'featured') return project.featured;
+    return false;
   });
 
   const handleTabChange = (tab) => {
@@ -294,35 +295,23 @@ const Projects = () => {
       <ProjectsContainer>
         <SectionTitle>
           <h2>My Projects</h2>
-          <p>Here are some of my recent projects</p>
+          <p>Check out some of my recent work</p>
         </SectionTitle>
 
-        <ProjectTabs>
-          <TabButton
+        <FilterTabs>
+          <FilterButton
             active={activeTab === 'all'}
             onClick={() => handleTabChange('all')}
           >
             All
-          </TabButton>
-          <TabButton
-            active={activeTab === 'PHP'}
-            onClick={() => handleTabChange('PHP')}
+          </FilterButton>
+          <FilterButton
+            active={activeTab === 'featured'}
+            onClick={() => handleTabChange('featured')}
           >
-            PHP
-          </TabButton>
-          <TabButton
-            active={activeTab === 'React'}
-            onClick={() => handleTabChange('React')}
-          >
-            React
-          </TabButton>
-          <TabButton
-            active={activeTab === 'Node.js'}
-            onClick={() => handleTabChange('Node.js')}
-          >
-            Node.js
-          </TabButton>
-        </ProjectTabs>
+            Featured
+          </FilterButton>
+        </FilterTabs>
 
         <ProjectsGrid
           initial={{ opacity: 0 }}
