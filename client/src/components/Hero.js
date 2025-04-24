@@ -253,14 +253,14 @@ const Hero = () => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop;
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: offsetTop - 80, // Adjust for header height if needed
+        top: offsetTop - 80, // Adjust for header height
         behavior: 'smooth'
       });
-      // Remove hash from URL
-      if (window.history && window.history.pushState) {
-        window.history.pushState("", document.title, window.location.pathname + window.location.search);
+      // Clear URL hash
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState('', document.title, window.location.pathname + window.location.search);
       }
     }
   };
@@ -312,6 +312,7 @@ const Hero = () => {
           <ButtonGroup variants={itemVariants}>
             <Button
               as="button"
+              type="button"
               className="primary"
               onClick={(e) => scrollToSection(e, 'projects')}
               whileHover={{ scale: 1.05 }}
@@ -322,6 +323,7 @@ const Hero = () => {
             
             <Button 
               as="button"
+              type="button"
               className="secondary"
               onClick={(e) => scrollToSection(e, 'contact')}
               whileHover={{ scale: 1.05 }}
