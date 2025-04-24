@@ -45,29 +45,47 @@ const HeroContent = styled.div`
 `;
 
 const HeroTitle = styled(motion.h1)`
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  padding-bottom: 0.2rem;
+  
+  .text-gradient {
+    font-weight: 800;
+  }
   
   @media screen and (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
 `;
 
 const HeroSubtitle = styled(motion.h2)`
-  font-size: 2rem;
-  color: var(--accent-color);
-  margin-bottom: 2rem;
+  font-size: 3.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4070f4 0%, #2d8bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+  margin-top: 0.5rem;
+  padding-bottom: 0.2rem;
   
   @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
   }
 `;
 
 const HeroText = styled(motion.p)`
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--light-text-color);
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 600px;
+  margin-top: 0.5rem;
+  padding-bottom: 0.1rem;
 `;
 
 const ButtonGroup = styled(motion.div)`
@@ -231,7 +249,8 @@ const Shape = styled.div`
 `;
 
 const Hero = () => {
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
@@ -287,8 +306,10 @@ const Hero = () => {
           
           <ButtonGroup variants={itemVariants}>
             <Button
+              as="a"
+              href="#projects"
               className="primary"
-              onClick={() => scrollToSection('projects')}
+              onClick={(e) => scrollToSection(e, 'projects')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -296,8 +317,10 @@ const Hero = () => {
             </Button>
             
             <Button 
+              as="a"
+              href="#contact"
               className="secondary"
-              onClick={() => scrollToSection('contact')}
+              onClick={(e) => scrollToSection(e, 'contact')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
