@@ -210,19 +210,18 @@ const SubmitButton = styled.button`
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
+  font-size: 1rem;
   transition: var(--transition);
-  
-  &:hover {
+  margin-top: 1rem;
+  min-width: 160px;
+  justify-content: center;
+  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+
+  &:hover:not(:disabled) {
     background-color: #0069d9;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-  }
-  
-  &:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
   }
 `;
 
@@ -447,8 +446,8 @@ const Contact = () => {
               </IconWrapper>
               <CardContent>
                 <CardTitle>Phone</CardTitle>
-                <CardLink href="tel:+919033689105">
-                  +91 9033689105
+                <CardLink href="tel:+91 90336 89105">
+                  +91 90336 89105
                 </CardLink>
               </CardContent>
             </ContactCard>
@@ -474,15 +473,15 @@ const Contact = () => {
                     href="https://github.com/HitarthVaghela"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub"
+                    aria-label="GitHub: Hitarth Vaghela"
                   >
                     <FaGithub />
                   </SocialLink>
                   <SocialLink
-                    href="https://linkedin.com/in/"
+                    href="https://linkedin.com/in/hitarthvaghela"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn"
+                    aria-label="LinkedIn: Hitarth Vaghela"
                   >
                     <FaLinkedin />
                   </SocialLink>
@@ -490,7 +489,7 @@ const Contact = () => {
                     href="https://leetcode.com/u/Hitarth27/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LeetCode"
+                    aria-label="LeetCode: Hitarth27"
                   >
                     <FaCode />
                   </SocialLink>

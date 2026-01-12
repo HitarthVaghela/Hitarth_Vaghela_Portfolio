@@ -346,12 +346,12 @@ const Hero = () => {
             </SocialIcon>
             
             <SocialIcon 
-              href="https://linkedin.com/in/" 
+              href="https://linkedin.com/in/hitarthvaghela" 
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: -10 }}
               whileTap={{ scale: 0.9 }}
-              aria-label="LinkedIn"
+              aria-label="LinkedIn: Hitarth Vaghela"
             >
               <FaLinkedin />
             </SocialIcon>

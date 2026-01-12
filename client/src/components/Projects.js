@@ -205,24 +205,47 @@ const TechTag = styled.span`
   }
 `;
 
-// Mock data in case API is not available
+// ---------------- UPDATED PROJECTS DATA ------------------
+
 const mockProjects = [
   {
     _id: '1',
-    title: 'Spoural Management System',
+    title: 'Spoural Registration System (CHARUSAT)',
     description:
-      'A comprehensive software solution designed to streamline the planning, execution, and management of events. Provides tools to handle various aspects of event organization, from initial planning to post-event analysis.',
+      'Live event registration system for CHARUSAT handling 11,000+ students and 3,500+ registrations. Includes secure workflows, match announcements, schedules, and real-time updates with 25,000+ page views.',
     technologies: ['PHP', 'HTML', 'CSS', 'MySQL', 'JavaScript'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=Spoural+Management',
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=Spoural+Portal',
     github: 'https://github.com/harsh1036/Spoural_Managment_System',
-    demo: '#',
+    demo: 'http://spoural.charusat.edu.in',
     featured: true,
   },
   {
     _id: '2',
+    title: 'HR Analytics Portal',
+    description:
+      'Enterprise-grade HR analytics system built during internship. Includes SQL-based data processing, sentiment analysis, PDF report automation, and Power BI dashboards for employee exit trends.',
+    technologies: ['.NET', 'SQL Server', 'Power BI'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=HR+Analytics',
+    github: 'https://github.com/HitarthVaghela/HR-Analytics-for-Exit-Interviews',
+    demo: '#',
+    featured: true,
+  },
+  {
+    _id: '3',
+    title: 'RoomMate Expense Tracker',
+    description:
+      'A Django-based web app to split and track shared expenses. Supports secure authentication, group management, bill sharing, settlement calculations, and an intuitive dashboard.',
+    technologies: ['Django', 'Python', 'HTML', 'CSS', 'SQLite'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=Expense+Tracker',
+    github: 'https://github.com/HitarthVaghela/RoomExpense-using-Django',
+    demo: '#',
+    featured: true,
+  },
+  {
+    _id: '4',
     title: 'Serene Space',
     description:
-      'Created a mental health app with personalized recommendations, meditation guides, mood tracking, and daily affirmations.',
+      'A mental wellness platform with doctor listings, patient registration, appointment scheduling, and automated confirmation emails to improve mental health accessibility.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'PHP'],
     image: 'https://placehold.co/600x400/007bff/ffffff?text=Serene+Space',
     github: 'https://github.com/HitarthVaghela/Serene_Space',
@@ -230,47 +253,24 @@ const mockProjects = [
     featured: true,
   },
   {
-    _id: '3',
-    title: 'InfiniteAI Website',
-    description:
-      'Developed a full-stack job portal with admin and client-side panels. Integrated task management features with automated Gmail notifications.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=InfiniteAI+Website',
-    github: 'https://github.com/HitarthVaghela/InfiniteIO',
-    demo: '#',
-    featured: true,
-  },
-  {
-    _id: '4',
-    title: 'Chess Using JavaScript',
-    description:
-      'A functional chess game built entirely using JavaScript, HTML, and CSS. The project was created as an experiment to try new ideas and enhance skills in web-based game development.',
-    technologies: ['JavaScript', 'HTML', 'CSS'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=Chess+Game',
-    github: 'https://github.com/HitarthVaghela/Chess-Using-JavaScript',
-    demo: '#',
-    featured: false,
-  },
-  {
     _id: '5',
-    title: 'E-Commerce Website Using Django',
+    title: 'ASL Fingerspelling Recognition',
     description:
-      'An e-commerce platform built with Django framework, featuring product listings, user authentication, shopping cart functionality, and payment integration.',
-    technologies: ['Python', 'Django', 'HTML', 'CSS', 'JavaScript', 'SQLite'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=E-Commerce+Website',
-    github:
-      'https://github.com/HitarthVaghela/E-Commerce-website-using-Django',
+      'Worked on Kaggle Google ASL competition developing a hybrid model combining CNN + Transformer architectures to classify American Sign Language hand gestures for accessibility technology.',
+    technologies: ['Python', 'Deep Learning', 'TensorFlow', 'Kaggle'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=ASL+Recognition',
+    github: '#',
     demo: '#',
     featured: false,
   },
   {
     _id: '6',
-    title: 'DC Wallet Extension',
+    title: 'Chess Using JavaScript',
     description:
-      'A secure multi-chain cryptocurrency wallet browser extension supporting Ethereum and other EVM-compatible networks. Includes features like secure key storage, multiple accounts, and transaction signing.',
-    technologies: ['TypeScript', 'React', 'JavaScript', 'Blockchain', 'Ethereum'],
-    image: 'https://placehold.co/600x400/007bff/ffffff?text=DC+Wallet',
-    github: 'https://github.com/neminharia/DC_Wallet',
+      'Fully functional chess game built using Vanilla JavaScript with move validation, turn logic, UI interactions, and smooth gameplay experience.',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
+    image: 'https://placehold.co/600x400/007bff/ffffff?text=Chess+Game',
+    github: 'https://github.com/HitarthVaghela/Chess-Using-JavaScript',
     demo: '#',
     featured: false,
   },
@@ -286,10 +286,6 @@ const Projects = () => {
     return false;
   });
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-
   return (
     <ProjectsSection id="projects">
       <ProjectsContainer>
@@ -301,13 +297,13 @@ const Projects = () => {
         <FilterTabs>
           <FilterButton
             active={activeTab === 'all'}
-            onClick={() => handleTabChange('all')}
+            onClick={() => setActiveTab('all')}
           >
             All
           </FilterButton>
           <FilterButton
             active={activeTab === 'featured'}
-            onClick={() => handleTabChange('featured')}
+            onClick={() => setActiveTab('featured')}
           >
             Featured
           </FilterButton>
@@ -335,26 +331,28 @@ const Projects = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="GitHub"
                       >
                         <FaGithub />
                       </ProjectLink>
                     )}
-                    {project.demo && (
+                    {project.demo && project.demo !== '#' && (
                       <ProjectLink
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Live Demo"
                       >
                         <FaExternalLinkAlt />
                       </ProjectLink>
                     )}
                   </ProjectLinks>
                 </ProjectImage>
+
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
-                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <ProjectDescription>
+                    {project.description}
+                  </ProjectDescription>
+
                   <TechStack>
                     {project.technologies.map((tech) => (
                       <TechTag key={tech}>{tech}</TechTag>
@@ -370,4 +368,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
