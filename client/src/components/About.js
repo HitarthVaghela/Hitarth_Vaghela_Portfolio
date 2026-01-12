@@ -316,7 +316,7 @@ const About = () => {
                   <h3>Bachelor in Computer Engineering</h3>
                   <h4>Charotar University of Science and Technology, Anand</h4>
                   <div className="timeline-date">July 2024 – Present</div>
-                  <p>CGPA: 7.92</p>
+                  <p>CGPA: 8.61</p>
                 </TimelineContent>
               </TimelineItem>
               
