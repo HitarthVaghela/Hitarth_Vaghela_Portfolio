@@ -161,7 +161,7 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
           onClick={() => scrollToSection('home')}
         >
-          Hitarth<span>.</span>
+          Hitarth Vaghela<span>.</span>
         </Logo>
 
         <MenuIcon onClick={() => setIsOpen(!isOpen)}>
